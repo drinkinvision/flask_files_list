@@ -81,13 +81,3 @@ urllib3==1.26.9
 virtualenv==20.16.3
 wcwidth==0.2.5
 webencodings==0.5.1
-Werkzeug==2.3.6
-whichcraft==0.6.1
-widelearning==0.8.2
-widgetsnbextension==3.6.0
-wincertstore==0.2
-wrapt==1.14.1
-yarg==0.1.9
-zipp==3.8.0
-zope.event==4.6
-zope.interface==6.0
