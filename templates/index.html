@@ -8,23 +8,15 @@
     <form action="/files" method="post">
         <label for="folder_path">Путь к папке:</label>
         <input type="text" id="folder_path" name="folder_path">
-        <br>
-        <label for="file_name">Имя файла:</label>
-        <input type="text" id="file_name" name="file_name">
-        <br>
-        <input type="submit" value="Показать и сохранить файлы">
+        <input type="submit" value="Показать файлы">
     </form>
 
     {% if files %}
-        <h2>Список файлов:</h2>
         <ul>
         {% for file in files %}
             <li>{{ loop.index }}. {{ file }}</li>
         {% endfor %}
         </ul>
-        {% if save_path %}
-            <p>Файл сохранен: <a href="{{ save_path }}">{{ save_path }}</a></p>
-        {% endif %}
     {% endif %}
 </body>
 </html>
