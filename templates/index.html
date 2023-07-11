@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Список файлов</title>
+    <title>Список файлов и папок</title>
 </head>
 <body>
-    <h1>Список файлов в папке:</h1>
-    <form action="/files" method="post">
+    <h1>Список файлов и папок</h1>
+    <form action="/list_files" method="POST">
         <label for="folder_path">Путь к папке:</label>
-        <input type="text" id="folder_path" name="folder_path">
-        <input type="submit" value="Показать файлы">
+        <input type="text" id="folder_path" name="folder_path" required>
+        <input type="submit" value="Получить список">
     </form>
-
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
     {% if files %}
+        <h2>Файлы:</h2>
         <ul>
         {% for file in files %}
-            <li>{{ loop.index }}. {{ file }}</li>
+            <li>{{ file }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if folders %}
+        <h2>Папки:</h2>
+        <ul>
+        {% for folder in folders %}
+            <li>{{ folder }}</li>
         {% endfor %}
         </ul>
     {% endif %}

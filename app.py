@@ -7,11 +7,22 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/files', methods=['POST'])
-def get_files_in_folder():
+@app.route('/list_files', methods=['POST'])
+def list_files():
     folder_path = request.form['folder_path']
-    file_list = os.listdir(folder_path)
-    return render_template('index.html', files=file_list)
+    files = []
+    folders = []
+    
+    try:
+        for item in os.listdir(folder_path):
+            if os.path.isfile(os.path.join(folder_path, item)):
+                files.append(item)
+            else:
+                folders.append(item)
+    except FileNotFoundError:
+        return render_template('index.html', error='Папка не найдена')
+    
+    return render_template('index.html', files=files, folders=folders)
 
 if __name__ == '__main__':
     app.run()
